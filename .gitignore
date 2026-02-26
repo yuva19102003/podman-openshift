@@ -1,0 +1,79 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+app
+
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool
+*.out
+
+# Go workspace file
+go.work
+
+# Dependency directories
+vendor/
+
+# Environment variables (sensitive data)
+.env
+.env.*
+!.env.example
+
+# Configuration files with sensitive data
+config.json
+!config.json.example
+
+# Data directory (logs and persistent data)
+data/
+!data/.gitkeep
+!data/log/.gitkeep
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Build artifacts
+dist/
+build/
+*.tar.gz
+*.zip
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Go sum backup
+go.sum.backup
+
+# Air (live reload) temporary files
+tmp/
+.air.toml
+
+# Coverage reports
+coverage.txt
+coverage.html
+*.coverprofile
+
+# Debug files
+debug
+__debug_bin
+
+# Container/Podman related
+*.tar
