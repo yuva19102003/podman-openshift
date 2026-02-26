@@ -1,0 +1,50 @@
+# Environment and config files (will be injected by OpenShift)
+.env
+.env.*
+config.json
+
+# Data directory (will be mounted as PersistentVolume)
+data/
+data/*
+
+# Git files
+.git
+.gitignore
+.gitkeep
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build artifacts
+*.exe
+*.dll
+*.so
+*.dylib
+app
+
+# Test files
+*_test.go
+test/
+tests/
+
+# Documentation
+README.md
+*.md
+docs/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+Jenkinsfile
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db

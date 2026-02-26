@@ -1,0 +1,9 @@
+{
+  "application": {
+    "name": "OpenShift Go Monolith",
+    "environment": "production"
+  },
+  "database": {
+    "user": "app_user"
+  }
+}
