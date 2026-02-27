@@ -1,0 +1,74 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podman-openshift
+  namespace: romanyuvan-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: podman-openshift
+  template:
+    metadata:
+      labels:
+        app: podman-openshift
+    spec:
+      containers:
+        - name: podman-openshift
+          image: image-registry.openshift-image-registry.svc:5000/romanyuvan-dev/podman-openshift:latest
+          ports:
+            - containerPort: 8080
+          
+          envFrom:
+            - configMapRef:
+                name: go-monolith-config
+          
+          env:
+            - name: DB_USER
+              valueFrom:
+                secretKeyRef:
+                  name: go-monolith-secrets
+                  key: DB_USER
+          
+          volumeMounts:
+            - name: app-volume
+              mountPath: /app/data
+            - name: json-config
+              mountPath: /app/config.json
+              subPath: config.json
+            - name: env-file
+              mountPath: /app/.env
+              subPath: .env
+          
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 10
+            periodSeconds: 30
+          
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "500m"
+      
+      volumes:
+        - name: app-volume
+          persistentVolumeClaim:
+            claimName: app-storage
+        - name: json-config
+          configMap:
+            name: go-monolith-json-config
+        - name: env-file
+          configMap:
+            name: go-monolith-env-file

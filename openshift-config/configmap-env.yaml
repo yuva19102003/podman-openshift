@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: go-monolith-env-file
+  namespace: romanyuvan-dev
+data:
+  .env: |
+    APP_NAME=OpenShift Go Monolith
+    APP_ENV=production
+    DB_USER=app_user

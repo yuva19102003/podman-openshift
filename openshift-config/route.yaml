@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: podman-openshift
+  namespace: romanyuvan-dev
+spec:
+  to:
+    kind: Service
+    name: podman-openshift
+  port:
+    targetPort: 8080
+  tls:
+    termination: edge

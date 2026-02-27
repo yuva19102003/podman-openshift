@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: go-monolith-json-config
+  namespace: romanyuvan-dev
+data:
+  config.json: |
+    {
+      "application": {
+        "name": "OpenShift Go Monolith",
+        "environment": "production"
+      },
+      "database": {
+        "user": "app_user"
+      }
+    }
